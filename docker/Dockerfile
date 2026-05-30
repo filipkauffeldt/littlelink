@@ -3,6 +3,12 @@ FROM nginx:alpine
 # Copy static website files
 COPY . /usr/share/nginx/html/
 
+# Ensure correct ownership and permissions for the nginx process
+# (helpful when running the built image without bind-mounting host files)
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    find /usr/share/nginx/html -type d -exec chmod 755 {} \; && \
+    find /usr/share/nginx/html -type f -exec chmod 644 {} \;
+
 # Configure nginx with basic optimization and logging to stdout/stderr
 RUN echo 'server { \
     listen 80; \
