@@ -382,8 +382,9 @@ ul li {
 }
 
 /* QR modal styles (moved from inline in index.html) */
-.qr-modal{display:none;position:fixed;inset:0;z-index:9999;font-family:inherit}
-.qr-modal.open{display:flex;align-items:center;justify-content:center}
+[hidden]{display:none !important}
+.qr-modal{position:fixed;inset:0;z-index:9999;font-family:inherit;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none}
+.qr-modal.open{opacity:1;visibility:visible;pointer-events:auto}
 .qr-modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
 .qr-modal__content{position:relative;background:#fff;color:#111;padding:1rem;border-radius:8px;max-width:92vw;min-width:260px;box-shadow:0 10px 30px rgba(0,0,0,.3);text-align:center}
 .qr-modal__content h2{margin:.25rem 0 .5rem;font-size:1.1rem}

@@ -104,7 +104,7 @@
   </div>
 
   <!-- QR Modal -->
-  <div id="qr-modal" class="qr-modal" aria-hidden="true">
+  <div id="qr-modal" class="qr-modal" aria-hidden="true" hidden>
     <div id="qr-backdrop" class="qr-modal__backdrop"></div>
     <div class="qr-modal__content" role="dialog" aria-modal="true" aria-label="Share QR code">
       <h2>Share this page</h2>
@@ -126,11 +126,13 @@
         img.src = api;
         modal.classList.add('open');
         modal.setAttribute('aria-hidden','false');
+        modal.hidden = false;
         document.body.style.overflow = 'hidden';
       }
       function hideQR(){
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden','true');
+        modal.hidden = true;
         document.body.style.overflow = '';
       }
 
