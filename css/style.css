@@ -380,3 +380,15 @@ ul li {
 	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.eot');
 	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.eot?#iefix') format('embedded-opentype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.woff2') format('woff2'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.woff') format('woff'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.ttf') format('truetype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.svg#OpenSans') format('svg');
 }
+
+/* QR modal styles (moved from inline in index.html) */
+.qr-modal{display:none;position:fixed;inset:0;z-index:9999;font-family:inherit}
+.qr-modal.open{display:flex;align-items:center;justify-content:center}
+.qr-modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
+.qr-modal__content{position:relative;background:#fff;color:#111;padding:1rem;border-radius:8px;max-width:92vw;min-width:260px;box-shadow:0 10px 30px rgba(0,0,0,.3);text-align:center}
+.qr-modal__content h2{margin:.25rem 0 .5rem;font-size:1.1rem}
+.qr-modal__close{position:absolute;top:6px;right:8px;border:0;background:transparent;font-size:1.4rem;line-height:1;cursor:pointer}
+.qr-modal__content img{width:240px;height:240px;max-width:80vw}
+.qr-modal__content a{color:inherit}
+@media (prefers-color-scheme:dark){.qr-modal__content{background:#111;color:#eee}}
+

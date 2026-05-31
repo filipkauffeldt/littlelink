@@ -36,9 +36,8 @@
 
     <!-- LittleLink Extended Stylesheet (Optional) -->
     <!-- <link rel="stylesheet" href="css/brands-extended.css"> -->
-    <!-- Learn more at https://github.com/sethcottle/littlelink-extended.
-         Remove comments if you've added LittleLink Extended dependencies -->
-
+        <!-- Learn more at https://github.com/sethcottle/littlelink-extended.
+          Remove comments if you've added LittleLink Extended dependencies -->
   </head>
 
 <body>
@@ -97,11 +96,50 @@
 
       <!-- Feel free to add your own footer information, including updating `privacy.html` to reflect how your LittleLink fork is set up -->
       <footer>
-        Build your own by forking <a href="https://littlelink.io" target="_blank" rel="noopener">LittleLink</a>
+        <a href="#" id="share-qr">Share (QR)</a>
+        | Created with <a href="https://littlelink.io" target="_blank" rel="noopener">LittleLink</a>
       </footer>
 
     </div>
   </div>
+
+  <!-- QR Modal -->
+  <div id="qr-modal" class="qr-modal" aria-hidden="true">
+    <div id="qr-backdrop" class="qr-modal__backdrop"></div>
+    <div class="qr-modal__content" role="dialog" aria-modal="true" aria-label="Share QR code">
+      <h2>Share this page</h2>
+      <img id="qr-image" alt="QR code for this page" src="" />
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var openBtn = document.getElementById('share-qr');
+      var modal = document.getElementById('qr-modal');
+      var img = document.getElementById('qr-image');
+      var closeBtn = document.getElementById('qr-close');
+      var backdrop = document.getElementById('qr-backdrop');
+
+      function showQR(){
+        var url = encodeURIComponent(location.href);
+        var api = 'https://api.qrserver.com/v1/create-qr-code/?size=360x360&data=' + url;
+        img.src = api;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+      function hideQR(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+
+      if(openBtn) openBtn.addEventListener('click', function(e){ e.preventDefault(); showQR(); });
+      if(closeBtn) closeBtn.addEventListener('click', hideQR);
+      if(backdrop) backdrop.addEventListener('click', hideQR);
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hideQR(); });
+    })();
+  </script>
 
 </body>
 
